@@ -1,0 +1,117 @@
+body {
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 90%;
+}
+.yui-skin-sam .yui-layout {
+     background-color:#FFFFFF;
+}
+.yui-layout-unit-top .yui-layout-bd {
+   /*  background: url(http://localhost:8080/bureauv2new/images/bottomBack.png) repeat-x;*/
+}
+.yui-skin-sam .yui-layout .yui-layout-unit div.yui-layout-bd {
+     background-color: #FFFFFF;
+}
+.yui-skin-sam .yui-layout .yui-layout-hd {
+     /*background: url(http://localhost:8080/bureauv2new/images/dialoghd.gif) repeat-x;*/
+     border-bottom-color: transparent;
+}
+.yui-skin-sam .yui-layout .yui-layout-unit div.yui-layout-hd h2 {
+     color:#FFFFFF;
+}
+   
+.yui-skin-sam .yui-layout .yui-layout-unit div.yui-layout-bd {
+     border-color: #FFFFFF;
+}
+                
+a:link, a:visited { 
+     color:#FFFFFF;
+     text-decoration: none;
+}
+                
+.yui-skin-sam .yui-layout .yui-layout-unit div.yui-layout-hd .close {
+     background: url(http://localhost:8080/bureauv2new/images/dialogclose.png) no-repeat;
+     border:0;
+     top:3px;
+     width:16px;
+     height:16px;
+}
+                
+.yui-skin-sam .yui-layout .yui-layout-unit-right div.yui-layout-hd .collapse,
+.yui-skin-sam .yui-layout .yui-layout-unit-left div.yui-layout-hd .collapse {
+     border:0;
+     right:20px;
+     width:18px;
+     height:18px;
+}
+                
+.yui-skin-sam .yui-layout .yui-layout-unit-right div.yui-layout-hd .collapse {
+     background: url(http://localhost:8080/bureauv2new/images/right.png) no-repeat;
+}
+                
+.yui-skin-sam .yui-layout .yui-layout-unit-left div.yui-layout-hd .collapse {
+     background: url(http://localhost:8080/bureauv2new/images/left.png) no-repeat;
+}
+                
+.yui-skin-sam .yui-layout .yui-layout-clip {
+     background-color: #333333;
+}
+                
+.yui-skin-sam .yui-layout .yui-layout-unit-bottom div.yui-layout-bd {
+     text-align: center;
+}
+                
+/* Accordion */
+.yui-skin-sam .yui-accordionview {
+     border-bottom-color: #049dae;
+}
+                
+.yui-skin-sam .yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle,
+.yui-skin-sam .yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle:hover,
+.yui-skin-sam .yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle.active:hover, 
+.yui-skin-sam .yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle.active  {
+	background: url(http://localhost:8080/bureauv2new/images/dialoghd.gif) repeat-x;
+	color: white;
+}
+                
+.yui-skin-sam .yui-accordion-content {
+	background-color: #FFFFFF;
+	border:transparent;
+	color: #FFFFFF;
+}
+                
+.yui-skin-sam .yui-accordionview li.yui-accordion-panel a.yui-accordion-toggle {
+	border:0;
+}
+                
+.yui-skin-sam .yui-accordion-toggle.active .indicator {
+	background: url(http://localhost:8080/bureauv2new/images/minus.png) no-repeat;
+	top:3px;
+}
+                
+.yui-skin-sam .yui-accordion-toggle .indicator {
+	background: url(http://localhost:8080/bureauv2new/images/plus.png) no-repeat;
+	top:3px;
+}
+                
+                /* Calendar */
+.yui-skin-sam .yui-calcontainer {
+	background: url(http://localhost:8080/bureauv2new/images/menu_body.gif) repeat-y;
+}
+                
+.yui-skin-sam .yui-calendar .calweekdaycell {
+	color: #FFFFFF;
+}
+                
+.yui-skin-sam .yui-calendar td.calcell, .yui-skin-sam .yui-calendar td.calcell.oom {
+	background-color: #333333;
+	color: #FFFFFF;
+}
+                
+.yui-skin-sam .yui-calendar td.calcell a {
+    color: #FFFFFF;
+}
+                
+.yui-skin-sam .yui-calendar td.calcell.today a {
+	color: #CCCCCC;
+}
+

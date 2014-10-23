@@ -1,0 +1,74 @@
+.outer a, .outer div, .outer li, .outer ul, .outer body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	border:0px;
+}
+
+.menubar a, .menubar div, .menubar li, .menubar ul, .menubar body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	border:0px;
+	display:inline;
+}
+
+div.menus{
+	border:0px;
+	margin: 0;
+	padding: 0;
+}
+div.menus ul{
+	list-style: none;
+	text-indent: 0px;
+}
+div.menus li{
+	background: url('../images/left-menu-noshadow.png') no-repeat;
+	
+}
+div.menus a{
+	font: 16px Arial;
+	font-weight:bold;
+	color: #3D3A35;
+	display:block;
+	padding: 4px 12px;
+	height:30px;
+	text-decoration: none;
+	vertical-align:bottom;
+	text-align:left;
+	background: url('../images/left-menu-normal.png') no-repeat;
+}
+div.menus a:hover{
+	background: url('../images/left-menu-selected.png') no-repeat;
+	font: 16px Arial;
+	font-weight:bold;
+	color: #3D3A35;
+	display:block;
+	padding: 4px 12px;
+	height:30px;
+	text-decoration: none;
+	text-align:left;
+	vertical-align:bottom;
+}
+
+
+
+div.menustatistics{
+	width: 193px;
+}
+div.menustatistics ul{
+	list-style: none;
+	text-indent: 0px;
+}
+div.menustatistics li{
+	margin-top: 3px;
+}
+div.menustatistics a{
+	font: 12px Arial, Helvetica, sans-serif;
+	padding: 4px;
+	color: #FFFFFF;
+	display:block;
+	padding: 6px 30px;
+	height: 20px;
+	text-decoration: none;
+}

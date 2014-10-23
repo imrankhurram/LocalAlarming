@@ -1,0 +1,45 @@
+.add{
+	background: url('./images/addButton.png') !important;
+}
+
+.leftVericalMenu .ui-menu .bd {
+font: 12px Arial, Helvetica, sans-serif;
+	padding: 4px;
+	color: #FFFFFF;
+	display:block;
+	padding: 6px 30px;
+	height: 20px;
+	text-decoration: none;
+	background: url('../images/background.gif');
+}
+.leftVericalMenu  .ui-menu-item {
+font: 12px Arial, Helvetica, sans-serif;
+	padding: 4px;
+	color: #FFFFFF;
+	display:block;
+	padding: 6px 30px;
+	height: 20px;
+	text-decoration: none;
+	background: url('../images/background.gif');
+}
+.leftVericalMenu  .ui-menu-item-label{
+font: 12px Arial, Helvetica, sans-serif;
+	padding: 4px;
+	color: #FFFFFF;
+	display:block;
+	padding: 6px 30px;
+	height: 20px;
+	text-decoration: none;
+	background: url('../images/background.gif');
+}
+
+.leftVericalMenu  .ui-menu h6 {
+font: 12px Arial, Helvetica, sans-serif;
+	padding: 4px;
+	color: #FFFFFF;
+	display:block;
+	padding: 6px 30px;
+	height: 20px;
+	text-decoration: none;
+	background: url('../images/background.gif');
+}

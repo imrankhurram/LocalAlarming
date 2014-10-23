@@ -1,0 +1,82 @@
+<project name="ck" default="BuildAll">
+
+	<property name="bin" value="./bin" />
+	<property name="lib" value="./lib" />
+	<property name="src" value="./src" />
+	<property name="dist" value="./dist" />
+	<property name="warfile" value="${dist}/localalarming.war" />
+	<property name="html" value="./html" />
+	<property name="css" value="./css" />
+	<property name="images" value="./images" />
+
+	<!--<property name="jboss_home" value="\\atlas\E$\jb\jboss-5.0.1.GA\server\default\deploy"/>-->
+ <!--  	 <property name="jboss_home" value="C:\As7\jboss-as-7.1.1.Final\standalone\deployments" /> -->
+	<!--<property name="jboss_home" value="\\madelyn\C$\jb\jboss-5.0.1.GA\server\default\deploy"/>-->
+	<!--<property name="jboss_home" value="\\atlas\E$\AS7\jboss-as-7.1.1.Final\standalone\deployments"/>-->
+	<!--<property name="jboss_home" value="\\gideon\C$\AS7\jboss-as-7.1.1.Final\standalone\deployments"/> -->
+ <!-- <property name="jboss_home" value="\\webapps\c$\jb7\jboss-as-7.1.1.Final\standalone\deployments"/>-->  
+	<property name="jboss_home" value="C:\\AS7\jboss-as-7.1.0.Final\standalone\deployments" />
+	
+	<path id="my.classpath">
+		<pathelement path="${java.class.path}" />
+		<pathelement location="${bin}" />
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<target name="BuildAll" depends="clean, prep, compile, war, deploy" description="Complete rebuild.">
+		<echo message="Build complete." />
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" />
+		<delete dir="${dist}" />
+	</target>
+
+	<target name="prep">
+		<mkdir dir="${bin}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="compile" description="Compile all Java classes" depends="prep">
+
+		<javac srcdir="${src}" destdir="${bin}" debug="true" encoding="ISO-8859-1">
+			<classpath refid="my.classpath" />
+		</javac>
+
+		<copy todir="${bin}">
+			<fileset dir="${src}">
+				<include name="**/*.properties" />
+				<include name="**/*.txt" />
+			</fileset>
+		</copy>
+
+		<echo message="Compiled." />
+	</target>
+
+	<target name="war" depends="compile" description="Build WAR file.">
+		<delete file="${warfile}" />
+
+		<war destfile="${warfile}" webxml="web.xml">
+			<classes dir="${bin}" />
+			<lib dir="${lib}">
+				<include name="**/*.jar" />
+				<exclude name="servlet-api.jar" />
+			</lib>
+
+			<webinf dir=".">
+				<filename name="*.xml" />
+			</webinf>
+
+			<fileset dir="${html}" />
+			<!-- html/jsp files -->
+			<zipfileset dir="./images" prefix="images" />
+			<zipfileset dir="./css" prefix="css" />
+			<zipfileset dir="./scripts" prefix="scripts" />
+		</war>
+	</target>
+
+	<target name="deploy" depends="war" description="Deploy web application.">
+		<copy file="${warfile}" todir="${jboss_home}" />
+	</target>
+</project>

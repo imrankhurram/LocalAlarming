@@ -1,0 +1,82 @@
+
+
+.alarmboxpanel .ui-panel-content {
+background:#FF0000;
+color: #006699;
+}
+
+.loginOuterpanel .ui-panel-content  {
+background:#006699;
+}
+
+
+.loginInnerpanel .ui-panel-content  {
+background:#FFFFFF;
+}
+
+
+.outstandingalarmpanel .ui-panel-content {
+background:#ffd700;
+color: #006699;
+	
+}
+
+.alarmstatspanel .ui-panel-content .ui-panel-titlebar  {
+border-color:#FFFFFF;
+background:#FFFFFF;
+}
+
+.warningPanel .ui-panel-content{
+	background:#ff0000;
+	color:#ff0000;
+}
+
+.localAlarmingPanel .ui-panel-content{
+	background:#D3D3D3;
+	color:#D3D3D3;
+}
+
+.paneltext .ui-panel-title{
+	font-size:16px;
+}
+.call {
+	height:39px;
+	width: 39px; 	
+    background-image:url("../images/call.gif") !important;
+    top:5% !important;
+    left:1% !important;
+}
+
+.email {
+	height:39px;
+	width: 39px; 	
+    background-image:url("../images/email.gif") !important;
+    top:5% !important;
+    left:1% !important;
+}
+
+.sms {
+	height:39px;
+	width: 39px; 	
+    background-image:url("../images/sms.gif") !important;
+    top:5% !important;
+    left:1% !important;
+}
+
+.emailSms {
+	height:39px;
+	width: 39px; 	
+    background-image:url("../images/emailSms.gif") !important;
+    top:5% !important;
+    left:1% !important;
+}
+
+.loginButton {
+	height:27px;
+	width: 65px; 	
+    background-image:url("../images/button_login.png") !important;
+    top:10% !important;
+    left:1% !important;
+}
+
+

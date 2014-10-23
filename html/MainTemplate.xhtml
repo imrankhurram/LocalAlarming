@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core">
+			
+<f:view contentType="text/html">
+<h:head>
+	<title>
+		<ui:insert name="title">Local Monitoring Bureau</ui:insert>
+	</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="./css/styles.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/panel.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/textstyles.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/menu_style.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/menu.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/buttonstyles.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/sitetable.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/sitepanel.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/priority.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/bureau_style.css" type="text/css"/>
+<h:outputText value="&lt;!--[if IE]&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;./css/print.css&quot; media=&quot;print&quot; type=&quot;text/css&quot; /&gt;&lt;![endif]--&gt;" escape="false" />
+	
+ <!--<link rel="stylesheet" href="./css/print.css" type="text/css" media="print"/>-->	
+ 	
+<!-- 	<script type="text/javascript" src="./scripts/jquery.js"></script>
+<script type="text/javascript">
+$('button_selector').click(function(){
+	alert('hi');
+	   window.location.href='CurrentAlarmsPage.jsf';
+	});
+</script>-->
+</h:head>
+
+<h:body rendered="#{userInfo.userName!=null}">
+<!--<ui:include src="./snippets/AlarmStatisticsDialogSnippet.xhtml" />-->
+<!--<ui:include src="./snippets/IdleMonitorDialogSnippet.xhtml" />-->
+<!--<ui:include src="./snippets/DlgActivitySnippet.xhtml" />-->
+
+
+<!-- START OF LAYOUTS -->
+	<!-- START OF LAYOUTS -->
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north"  collapsible="true"  gutter="0" >
+	 	  	 <ui:include src="./snippets/TitleSnippet.xhtml" /> 
+	 	  	 		  <!-- <h:graphicImage value="./images/logo2.jpg" style="padding-left:17px;" /> -->
+	 	  	 
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="south"  collapsible="true"  gutter="0" >
+			<!--<ui:include src="./snippets/FooterSnippet.xhtml" />-->
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="west" style="width:145px !important;top:90px !important; "  collapsible="true" gutter="0" >
+		 	<ui:include src="./snippets/LeftVerticalMenuSnippet.xhtml" />
+			<!--  <ui:include src="./snippets/GrowlSnippet.xhtml" />-->
+		</p:layoutUnit>
+		 
+		<p:layoutUnit position="east" collapsible="true" gutter="0" >
+			
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="center"  style="left:145px !important;top:90px !important; " collapsible="true"  gutter="0"  >
+			<ui:insert name="contentPanel"></ui:insert>
+		</p:layoutUnit>
+		
+	</p:layout>
+<!-- END OF LAYOUTS -->
+<!-- END OF LAYOUTS -->
+</h:body>
+
+<h:body rendered="#{userInfo.userName==null}">
+<ui:include src="login.xhtml" />
+</h:body>
+</f:view>
+</html>
+
+	

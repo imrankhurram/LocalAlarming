@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui" 
+template="MainTemplate.xhtml">
+
+<ui:define name="contentPanel">
+<!-- <ui:include src="./snippets/DlgCurrentAlarmsPrint.xhtml" /> -->
+<h:form id="frmcurrentalarmsPage" prependId="false">
+<br />
+<br />
+<br />
+<p:outputPanel>
+  <p:messages id="Msg"/>
+<center>
+
+	<table style="width:85%;" >
+	<tr valign="middle">
+		<td><!-- selectionMode ="single" selection="#{currentalarms.selectedAlarm}"  -->
+	
+	<!-- filteredValue="#{currentalarms.getAlarms.alarmId}" <p:dataTable id="tbCurrAlarms" value="#{currentalarms.alarms}" var="alarmtemp" 
+     	emptyMessage="There are no active alarms" rowStyleClass="#{alarmtemp.rowClass}"  
+    	style="border-right-width: 2px !important;overflow: -moz-scrollbars-vertical;overflow-x: hidden;overflow-y: auto;max-height:450px !important; width:100%;">-->
+    	
+    <p:dataTable id="tbCurrAlarms" var="alarmtemp" value="#{currentalarms.alarms}"  
+    rows="20"  emptyMessage="There are no active alarms" rowStyleClass="#{alarmtemp.rowClass}"  style="border-right-width: 2px !important;overflow: -moz-scrollbars-vertical;overflow-x: hidden;overflow-y: auto;max-height:450px !important; width:100%;"
+              >  
+  <!-- paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15" lazy="true"-->    
+       	<f:facet name="header">  
+            Currently Active Alarms
+     	</f:facet>
+     	<p:column style="width:9%;"  sortBy="#{alarmtemp.alarmId}" filterStyle="width:60%;" filterBy="#{alarmtemp.alarmId}">
+     	 <f:facet name="header">
+     	 	<h:outputText value= "System Number" style="font-weight:Bold!important;color:#6B696B!important; text-align:top;"/>
+     	 	</f:facet>
+     	 <div style="text-align:left;"><h:outputText value="#{alarmtemp.controllerName}"/> </div>
+   	 	</p:column>
+  	 	  	 	
+   	 	<p:column style="width:7%;">
+   	      <f:facet name="header">
+   	        <h:outputText value="Time and Date" style="font-weight:Bold!important;color:#6B696B!important; text-align:top; "/>
+   	        </f:facet>
+ 			 <div style="text-align:left;"><h:outputText value="#{alarmtemp.recvTime}"/></div>
+ 	 	</p:column>
+ 	 	<p:column style="width:50%;">
+ 	 	<f:facet name="header">
+ 	 	<h:outputText value="Alarm Details" style="font-weight:Bold!important;color:#6B696B!important"/>
+ 	 	</f:facet>
+     	 	 <div style="text-align:left;"><h:outputText value="#{alarmtemp.alarmString}" /></div> 
+   	 	</p:column>
+   	 	<p:column style="width:6%;text-align:center;">
+   	 	<f:facet name="header">
+   	        <h:outputText value="View" style="font-weight:Bold!important;color:#6B696B!important; text-align:top; "/>
+   	        </f:facet>
+ 			<p:commandButton icon="ui-icon-search" title="View" action="AlarmDetails?faces-redirect=true">
+ 			 <f:setPropertyActionListener value="#{alarmtemp}" target="#{currentalarms.selectedAlarm}" />  
+ 			</p:commandButton>
+   	 	
+   	 	
+   	 	</p:column>
+     </p:dataTable>
+  		</td>
+  	</tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    </table>
+    
+    </center>
+ </p:outputPanel>
+</h:form>
+
+</ui:define>
+</ui:composition>

@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+	<!-- START OF DIALOG -->
+	<p:dialog widgetVar="editUserDlg" id="editUserDlg" appendTo="@(body)"
+		modal="true" position="center" header="Edit User" resizable="false"
+		showEffect="fade" hideEffect="fade" closable="false">
+
+		<h:form id="editUserFrm" prependId="false">
+			<p:messages showDetails="true" id="updateMsg" closable="true" />
+
+			<p:panel style="box-shadow: 0px 0px 0px 0px !important;">
+				<p:panelGrid columns="2" style="width:100%;">
+					<p:panelGrid columns="2">
+						<p:outputLabel for="editSelectListType" value="User Type: " />
+						<p:selectOneMenu id="editSelectListType"
+							value="#{users.selectedUser.userWebType}" required="true"
+							editable="false">
+							<!-- <p:ajax listener="#{keyholdercalllist.setType}" event="change" update="addKeyHldsList" process="selectListType"/> -->
+							<f:selectItem itemValue="UserByPermissions" itemLabel="User" />
+							<f:selectItem itemValue="CustAdmin" itemLabel="Customer Admin" />
+						</p:selectOneMenu>
+						<p:outputLabel for="editUserTitle" value="Title: " />
+						<p:inputText id="editUserTitle"
+							value="#{users.selectedUser.title}" required="true"
+							requiredMessage="Title is required!" />
+						<p:outputLabel for="editForename" value="Forename: " />
+						<p:inputText id="editForename"
+							value="#{users.selectedUser.firstName}" required="true"
+							requiredMessage="Forename is required!" />
+						<p:outputLabel for="editSurname" value="Surname: " />
+						<p:inputText id="editSurname"
+							value="#{users.selectedUser.lastName}" required="true"
+							requiredMessage="Surname is required!" />
+						<p:outputLabel for="editContactNo" value="Contact No.: " />
+						<p:inputText id="editContactNo"
+							value="#{users.selectedUser.contactNumber}" />
+						<p:outputLabel for="editEmail" value="Email: " />
+						<p:inputText id="editEmail" value="#{users.selectedUser.email}" />
+					</p:panelGrid>
+					<p:panelGrid columns="2">
+						<p:outputLabel for="editUsername" value="UserName: " />
+						<p:inputText id="editUsername"
+							value="#{users.selectedUser.username}" required="true"
+							requiredMessage="Username is required!" />
+						<p:outputLabel for="editUserPassword" value="User Password: " />
+						<p:password id="editUserPassword"
+							value="#{users.selectedUser.password}" required="true"
+							requiredMessage="User Password is required!" />
+						<p:outputLabel for="editPinCode" value="PIN Code: " />
+						<p:inputText id="editPinCode"
+							value="#{users.selectedUser.pincode}" required="true"
+							requiredMessage="PIN Code is required!" />
+						<p:outputLabel for="editAccessExpiry"
+							value="Access Expiry (days): " />
+						<p:inputText id="editAccessExpiry"
+							value="#{users.selectedUser.passwordTimeout}" required="true"
+							requiredMessage="Access Expiry is required!" />
+						<p:outputLabel for="editPINExpiry" value="PIN Expiry (days): " />
+						<p:inputText id="editPINExpiry"
+							value="#{users.selectedUser.pinCodeTimeout}" required="true"
+							requiredMessage="PIN Expiry is required!" />
+					</p:panelGrid>
+				</p:panelGrid>
+				<!-- max-height:205px; -->
+				<p:panel
+					style="overflow:auto;width:100%;box-shadow: 0px 0px 0px 0px !important;">
+					<p:dataTable widgetVar="TbEdit" id="tbCustomersListEdit" var="row"
+						value="#{users.ownCustomersList}" rowKey="#{row.id}"
+						paginator="true" paginatorPosition="bottom"
+						paginatorAlwaysVisible="false" rows="200" scrollable="true"
+						scrollHeight="150px;" style="width:670px;"
+						emptyMessage="You have no Customer." resizableColumns="true"
+						selection="#{users.ownSelectedCustomersList}">
+						<p:column width="70">
+							<f:facet name="header">
+								<h:outputText value="OPERATING DIVISION" />
+							</f:facet>
+							<h:outputText id="name" value="#{row.name}">
+								<p:tooltip for="name" value="#{row.name}" />
+							</h:outputText>
+						</p:column>
+						<p:column width="70" selectionMode="multiple"
+							style="text-align:center;" />
+
+					</p:dataTable>
+				</p:panel>
+				<p:panelGrid style="width:100%">
+					<p:row>
+						<p:column style="width:50%"></p:column>
+						<p:column style="text-align:center;">
+							<p:panel style="box-shadow: 0px 0px 0px 0px !important;">
+								<p:commandButton value="Cancel" style="width:auto !important;"
+									onclick="PF('editUserDlg').hide();" styleClass="dialogButton"
+									update=":editUserDlg" resetValues="true" />
+								<p:commandButton id="updateUserBtn" value="Update"
+									style="width:auto !important;" action="#{users.modifyUser}"
+									styleClass="dialogButton"
+									oncomplete="PF('editUserDlg').hide();" update=":editUserFrm" />
+							</p:panel>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:panel>
+
+
+		</h:form>
+
+	</p:dialog>
+	<!-- END OF DIALOG -->
+</ui:composition>

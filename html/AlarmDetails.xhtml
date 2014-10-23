@@ -1,0 +1,432 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui" 
+template="MainTemplate.xhtml">
+
+
+<ui:define name="contentPanel">
+<!-- <ui:include src="./snippets/DlgCurrentAlarmsPrint.xhtml" /> -->
+<br/>
+<h:form id="frmcurrentalarmsPage" prependId="false">
+<p:outputPanel>
+  <p:messages id="Msg"/>
+<center>
+<!-- <p:dialog id="ddialog" widgetVar="temp" header="Template" closable="false"
+				appendToBody="true"> -->
+<h:form>
+	<h:commandButton  value="Print"  title="Print" actionListener="#{currentalarms.redirect}" styleClass="printbutton" >
+  	  <f:ajax execute="@this"/> 
+   	  <p:printer target="printer" />
+   	</h:commandButton> 
+     <p:spacer width="10" height="15" />
+    <h:button value="Back" outcome="CurrentAlarmsPage" title="Back" styleClass="printbutton"/>
+  <br/>
+  <br/>	   
+	<h:panelGrid id="printer" style="text-align:left;" >
+	   <!--	<p:scrollPanel id="printer" style="width:850px;height:520px" styleClass="waitroseTable">-->
+	 <h:outputText value="Waitrose Refrigeration alarm record" styleClass="topTitle"></h:outputText>
+	 <p:panelGrid styleClass="waitroseTable">
+		<p:row>
+		 <p:column styleClass="col1">
+			<h:outputText value="Branch:" />
+			<h:outputText value="#{currentalarms.selectedAlarm.siteCode} - #{currentalarms.selectedAlarm.siteName}" styleClass="outputTop"/>
+			<!-- <p:inputText id="branch" value="" required="false" style="width:300px" readonly="true" />-->
+		 </p:column>
+		 <p:column styleClass="col2">
+		   <h:outputText value="Date and time of alarm:" />
+		   <h:outputText value="#{currentalarms.selectedAlarm.recvTime}" styleClass="outputTop2"/>
+			<!--<p:inputText id="dateTime" value="" required="false" style="width:300px" readonly="true" />-->
+		 </p:column>
+	    </p:row>
+     </p:panelGrid>
+		 <p class="printP" style="margin-top:1px !important;">Use this form to record the actions taken when a
+							refrigeration alarm is received. Investigate all refrigerated
+							cabinet alarms and ensure the case number tag on the unit is
+							cross referenced against the reported alarm to ensure the correct
+							cabinet is checked.
+		 </p>
+		 <p style="font-weight: bold;" class="printP">If there is a risk that customers
+							may have purchased product outside its maximum temperature range,
+							contact the Operational Support Desk (OSD) for further advice.
+							Hold the affected stock in bulk refrigerated storage, clearly
+							marked NOT FOR SALE until the OSD advise the action required.
+		 </p>
+		 <p style="margin-bottom:0px !important;" class="printP">Once the cabinet fault has been resolved:
+			<br/>
+			 &#8226;  ensure the cabinet has returned to temperature before restocking using Kit A or Kit B temperature probes<br/>
+			 &#8226;  record the temperature before restocking<br/>
+			 &#8226;  file this record in the Refrigeration alarm folder<br/>
+			 &#8226;  weekly pass this form to the manager responsible for Branch Self Assessment (BSA)<br/>
+			</p>
+	<h:panelGrid style="border:2px solid;border-collapse: collapse;" cellpadding="0" >
+	  <p:panelGrid styleClass="waitroseTable">
+		<p:row>
+		  <p:column style="background-color:#D1D2D4;-webkit-print-color-adjust: exact;font-weight:bold;border-left:none;border-bottom:none;border-top:none;width:220px;">
+				If this is a test alarm, record here with no further action taken:
+		  </p:column>
+		  <p:column style="border-bottom:none;border-top:none;">
+			<h:outputText value="Name:" />
+			<p:spacer width="250" styleClass="spacerheight" />
+				<!--<p:inputText id="name" value="" required="false" readonly="true" />-->
+ 		  </p:column>
+		  <p:column style="border-right:none;border-bottom:none;border-top:none;">
+			<h:outputText value="Signature:" />
+			<p:spacer width="135" styleClass="spacerheight" />
+				<!-- <p:inputText id="signature" value="" required="false" readonly="true" />-->
+		  </p:column>
+	    </p:row>
+	 </p:panelGrid>
+	 
+	 <div id="stage1">
+		<p  class="Pprint st1">For all other alarms, complete
+								all sections of this form.</p>
+		<p class="Pprint st11">Stage 1 – Partner reporting the
+								alarm must record the following:</p>
+	 </div>
+	 
+	 <p:panelGrid styleClass="waitroseTable">
+	   <p:row>
+		   <p:column style="width:150px;background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;border-top:none; ">
+			 <h:outputText value="System number / pack ID" />
+		   </p:column>
+		
+		   <p:column style="border-top:none;width:150px;">
+			 <!-- <p:spacer width="150" height="15" /> -->
+		     <h:outputText value="#{currentalarms.selectedAlarm.controllerName}" />
+		   </p:column>
+		
+		   <p:column style="width:150px;background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-top:none; ">
+		     <h:outputText	value="Section / branch refrigerated area" />
+		   </p:column>
+		
+		   <p:column style="border-top:none;">
+		     <!-- <p:spacer width="80" height="15" /> -->
+		     <h:outputText  value="#{currentalarms.selectedAlarm.fixtureType}" />
+		   </p:column>
+		
+		   <p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-right:none;border-top:none; ">
+		     <h:outputText value="Passed to for action(name)" />
+	    	</p:column>
+	 </p:row>
+	 <p:row>
+			<p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact; font-weight:bold;border-left:none;height:30px;">
+	   	  	  <h:outputText value="NEXT reference number" />
+			</p:column>
+			
+			<p:column>
+			  <h:outputText value="#{currentalarms.selectedAlarm.alarmId}"  style="width:60px;"/>
+		    	<!-- <p:inputText id="referenceNumber" value="" required="false" readonly="true" />-->
+			</p:column>
+			
+			<p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;height:30px;">
+			 	<h:outputText value="Alarm description" />
+			</p:column>
+			
+			 <p:column>
+				<h:outputText value="#{currentalarms.selectedAlarm.alarmType}"  style="width:60px;padding-left:5px;"/>
+				<!-- <p:inputText id="alarmDescription" value="" required="false" readonly="true" /> -->
+			 </p:column>
+			 
+			 <p:column rowspan="2" style="border-right:none;">
+			   	<p:spacer width="80" styleClass="spacerheight"/>
+				<!-- <p:inputTextarea id="passedAction" value="" required="false" readonly="true" />-->
+			 </p:column>
+	 </p:row>
+	 <p:row>
+	   	  <p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;height:30px;">
+			   <h:outputText value="Alarm reference number" />
+		  </p:column>
+		
+		  <p:column>
+				<h:outputText value="#{currentalarms.selectedAlarm.alarmId}"  style="width:60px;height:15px;"/>
+				 <!-- <p:inputText id="alarmReferenceNumber" value=""
+						required="false" readonly="true" style="box-shadow: none !important;-webkit-box-shadow: none; border:none;" />--> 
+		  </p:column>
+		
+		  <p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;height:30px;">
+			<h:outputText value="Alarm temp" />
+		  </p:column>
+		
+		  <p:column>
+	   		<h:outputText value="#{currentalarms.selectedAlarm.tempAlarmType}"  style="width:60px;padding-left:5px;height:15px;"/>
+								<!-- <p:inputText id="alarmTemp" value="" required="false"
+										readonly="true" style="box-shadow: none !important;-webkit-box-shadow: none; border:none;"/>-->
+		  </p:column>
+	 </p:row>
+	 <p:row>
+		 <p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;border-bottom:none;">
+			<h:outputText value="Reporting Partner" />
+		 </p:column>
+		
+		 <p:column colspan="2" styleClass="PName">
+			<h:outputText value="Name:" />
+		    <h:outputText value="#{currentalarms.name}" style="box-shadow: none !important;-webkit-box-shadow: none; border:none;padding-left:3px;"/>
+		    <!-- <p:spacer width="80" height="15" />--> 
+		 </p:column>
+		
+		<p:column style="border-bottom:none;">
+			<h:outputText value="Signature:" />
+		    <p:spacer width="80" styleClass="spacerheight" />	
+				<!-- <p:inputText id="reportingPartnerSignature" value=""
+										style="width:70px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		</p:column>
+		
+		<p:column style="border-right:none;border-bottom:none;">
+			<h:outputText value="Date:" />
+			<p:spacer width="60" styleClass="spacerheight"/>
+  			<br />
+			<h:outputText value="Time:"/>
+			<p:spacer width="80" styleClass="spacerheight" />
+		<!-- <p:inputText id="reportingPartnerDate" value="" style="margin-left:2px;width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		<!-- <p:inputText id="reportingPartnerTime" value="" style="width:100px" required="false" readonly="true" /> -->
+		</p:column>
+
+	 </p:row>
+ </p:panelGrid>
+	
+	<div id="stage2">
+		<p class="Pprint st2">Stage 2 – Partner investigating
+								the alarm must record the following:</p>
+	</div>
+	
+  <p:panelGrid styleClass="waitroseTable">
+ 	<p:row>
+      <p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;border-top:none; ">
+		<h:outputText value="Case number checked "></h:outputText>
+	   </p:column>
+		
+	   <p:column colspan="2" style="border-top:none;">
+		 <h:outputText value="Number:" />
+	  	 <p:spacer width="210" styleClass="spacerheight" />
+		            			<!-- <p:inputText id="caseNumber" value="" required="false"
+										style="width:180px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />-->
+		</p:column>
+		
+		<p:column style="width:150px;background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-top:none; ">
+		  <h:outputText value="Core probe product temperature"></h:outputText>
+		</p:column>
+		
+		<p:column style="width:150px;border-right:none;border-top:none;">
+		  <p:spacer width="130" styleClass="spacerheight" />
+							<!--  <p:inputText id="coreTemp" value="" required="false" style="width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;"
+										readonly="true" /> -->
+		  <h:outputText value="ºC" />
+		</p:column>
+	</p:row>
+	<p:row>
+		<p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;">
+	   	  <h:outputText value="Action taken"></h:outputText>
+		</p:column>
+		
+		<p:column colspan="2">
+		  <p:spacer styleClass="actionbox" />
+ 							<!-- <p:inputText id="actionTaken" value="" required="false"
+										style="width:230px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />-->
+		</p:column>
+		
+		<p:column rowspan="2" style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold; ">
+		  <h:outputText value="Is there a risk that product has been sold out of temperature?"></h:outputText>
+		</p:column>
+		
+		<p:column rowspan="2" style="border-right:none;">
+		  <h:selectOneRadio value="" border="0" styleClass="waitroseInnerTable">
+			<f:selectItem itemValue="yes" itemLabel="Yes" />
+			<f:selectItem itemValue="no" itemLabel="No" />
+		  </h:selectOneRadio>
+		  <h:outputText value="If yes report to OSD and follow emergency procedures"></h:outputText>
+		</p:column>
+	</p:row>
+	
+	<p:row>
+		<p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;">
+	   	  <h:outputText value="MML reference number (if applicable)"></h:outputText>
+		</p:column>
+		
+		<p:column colspan="2">
+		  <h:outputText value="Fault log placed:" />
+  		  <p:spacer width="210" styleClass="spacerheight" />
+  				  <!--  <p:inputText id="logPlaced" value="" required="false"
+										style="width:140px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />-->
+	  	</p:column>
+	</p:row>
+							
+	<p:row>
+		<p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;">
+			<h:outputText value="Checking Partner " />
+		</p:column>
+	
+		<p:column colspan="2">
+			<h:outputText value="Name:" />
+			<p:spacer width="210" styleClass="spacerheight" />
+     					<!-- <p:inputText id="checkingPartnerName" value="" required="false"
+										style="width:190px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />-->
+		</p:column>
+		<p:column>
+		    <h:outputText value="Signature:" />
+			<p:spacer width="80" styleClass="spacerheight" />	
+ 				<!--<p:inputText id="checkingPartnerSignature" value=""
+										style="width:80px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		</p:column>
+		
+		<p:column style="border-right:none;">
+		  <h:outputText value="Date:" />
+		  <p:spacer width="80" styleClass="spacerheight" />
+							<!-- 	<p:inputText id="checkingPartnerDate" value="" required="false"
+										style="margin-left:2px;width:100px" readonly="true" />-->
+		<br />
+		  <h:outputText value="Time:" />
+		  <p:spacer width="80" styleClass="spacerheight" />
+				<!--     <p:inputText id="checkingPartnerTime" value="" required="false"
+										style="width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" /> -->
+		</p:column>
+	</p:row>
+	
+	<p:row>
+		<p:column style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;border-bottom:none;">
+	    	<h:outputText value="Duty Manager" />
+		</p:column>
+		
+		<p:column colspan="2" style="border-bottom:none;">
+			<h:outputText value="Name:" />
+ 		    <p:spacer width="210" styleClass="spacerheight"/>
+							<!-- 		<p:inputText id="dutyManagerName" value="" required="false"
+										style="width:190px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />-->
+		</p:column>
+		
+		<p:column  style="border-bottom:none;">
+			<h:outputText value="Signature:" />
+			<p:spacer width="80" styleClass="spacerheight"/>
+				<!--<p:inputText id="dutyManagerSignature" value=""
+								style="width:80px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		</p:column>
+		
+		<p:column style="border-right:none;border-bottom:none;">
+			<h:outputText value="Date:" />
+			<p:spacer width="80" styleClass="spacerheight"/>
+				<!--<p:inputText id="dutyManagerDate" value="" required="false"
+										style="margin-left:2px;width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />--><br/>
+			<h:outputText value="Time:" />
+				<p:spacer width="80" styleClass="spacerheight" />
+								<!-- <p:inputText id="dutyManagerTime" value="" required="false"
+										style="width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />-->
+		</p:column>
+	</p:row>
+</p:panelGrid>
+
+ <div id="stage3">
+						<!--style="border-left: 1px solid black; border-right: 1px solid black"  -->
+		<p class="Pprint st3">Stage 3 – If the cabinet has
+								been emptied, the Partner restocking the cabinet must record
+								the following:</p>
+ </div>
+
+<p:panelGrid styleClass="waitroseTable">
+	<p:row>
+      <p:column colspan="3" style="background-color:#D1D2D4; -webkit-print-color-adjust: exact;font-weight:bold;border-left:none;border-top:none; ">
+		  <h:outputText value="Restocking temperature of cabinet" />
+	  </p:column>
+	  
+	  <p:column style="width:150px;border-right:none;border-top:none;">
+		 <p:spacer width="130" styleClass="spacerheight"/>	
+							<!--<p:inputText id="cabinetTemp" value="" required="false"
+										style="width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" readonly="true" />-->
+		  <h:outputText value="ºC" />
+	  </p:column>
+	</p:row>
+	
+	<p:row>
+		<p:column style="width:250px;background-color:#D1D2D4; -webkit-print-color-adjust: exact; font-weight:bold;border-left:none;">
+			<h:outputText value="Restocking Partner " />
+	 	</p:column>
+	
+		<p:column>
+	    	<h:outputText value="Name:" />
+			<p:spacer width="80" styleClass="spacerheight" />
+								<!-- <p:inputText id="restockingPartnerName" value=""
+										style="width:160px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />--> 
+ 		</p:column>
+		
+		<p:column style="width:150px">
+			<h:outputText value="Signature:" />
+			<p:spacer width="80" styleClass="spacerheight"/>
+								<!-- <p:inputText id="restockingPartnerSignature" value=""
+										style="width:85px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		</p:column>
+		
+		<p:column style="border-right:none;">
+			<h:outputText value="Date:" />
+			<p:spacer width="90" styleClass="spacerheight" />
+								<!-- <p:inputText id="restockingPartnerDate" value=""
+										style="margin-left:2px;width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false"
+										readonly="true" />--><br/>
+			<h:outputText value="Time:" />
+			<p:spacer width="90" styleClass="spacerheight" />
+								<!--  <p:inputText id="restockingPartnerTime" value=""
+										style="width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		</p:column>
+	</p:row>
+	
+	<p:row>
+	    <p:column style="background-color:#D1D2D4;-webkit-print-color-adjust: exact;font-weight:bold;border-left:none;border-bottom:none;">
+			<h:outputText value="Duty manager signature to confirm all corrective actions followed and cabinet is fit for restocking and the sale of chilled produce:" />
+		</p:column>
+		
+		<p:column style="border-bottom:none;">
+		   <h:outputText value="Name:" />
+		   <p:spacer width="80" styleClass="spacerheight"/>										
+								<!-- 	<p:inputText id="dutyManagerFinalName" value=""
+										style="width:160px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		</p:column>
+		
+		<p:column style="border-bottom:none;">
+		   <h:outputText value="Signature:" />
+		   <p:spacer width="80" styleClass="spacerheight" />
+				 <!--<p:inputText id="dutyManagerFinalSignature" value=""
+										style="width:85px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" /> -->
+		</p:column>
+		
+		<p:column style="border-right:none;border-bottom:none;">
+			<h:outputText value="Date:" />
+			<p:spacer width="90" styleClass="spacerheight"/>
+									<!-- <p:inputText id="dutyManagerFinalDate" value=""
+										style="margin-left:2px;width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false"
+										readonly="true" />--> <br/>
+			<h:outputText value="Time:" />
+			<p:spacer width="90" styleClass="spacerheight" />
+									<!--  <p:inputText id="dutyManagerFinalTime" value=""
+										style="width:100px;box-shadow: none !important;-webkit-box-shadow: none; border:none;" required="false" readonly="true" />-->
+		</p:column>
+    </p:row>
+ </p:panelGrid>
+</h:panelGrid>
+
+  <p:panelGrid styleClass="waitroseTable">
+    <p:row>
+	   <p:column styleClass="printbottom">
+	     <p style="font-weight: bold" class="bottomP">KEEP FOR 12 MONTHS</p>
+	   </p:column>
+	
+	   <p:column style="text-align:right;font-size:10px;" styleClass="printbottom">
+	     <p class="bottomP">WAHS 1599 (11.12)</p>
+	   </p:column>
+    </p:row>
+  </p:panelGrid>
+				<!-- 	</p:scrollPanel> -->
+</h:panelGrid>
+					<!-- icon="ui-icon-print"-->
+	<h:commandButton value="Print" type="button" title="Print" actionListener="#{currentalarms.redirect}" styleClass="printbutton" > 
+   		<f:ajax execute="@this" />
+   		<p:printer target="printer" />
+   	</h:commandButton>  
+    	<p:spacer width="10" height="15" />
+    <h:button value="Back" outcome="CurrentAlarmsPage" title="Back" styleClass="printbutton"/>   
+    			
+    	</h:form>
+      </center>
+ </p:outputPanel>
+</h:form>
+
+</ui:define>
+</ui:composition>			

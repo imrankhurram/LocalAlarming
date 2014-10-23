@@ -1,0 +1,215 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="MainTemplate.xhtml">
+
+
+	<ui:define name="contentPanel">
+		<!-- <div id="Wrapper"> -->
+		<!-- <ui:include src="./snippets/MenuBars/MenuBarUsersSnippet.xhtml" /> -->
+
+		<h:form id="frmUsersPage" prependId="false">
+			<!-- 		<div class="quarterminus30" style="margin: 0 10px 5px; width: 100%">
+					<p:ajaxStatus style="width:20px;height:20px;text-align:right;"
+						id="ajaxStatusPanel">
+						<f:facet name="start">
+							<h:graphicImage value="./images/ajaxloading.gif" />
+						</f:facet>
+
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus> -->
+
+			<!-- <div class="userPanel" style="float: left">
+						User:
+						<p:outputLabel value="#{userInfo.userName}"
+							style="font-size:15px !important; font-weight:bold !important;" />
+					</div> -->
+			<!-- <div
+						style="background: #a8a8a8; border: 1px solid black; color: white; float: right; font-size: 13px; font-weight: bold; padding: 3px 3px 3px 20px; width: 95px;">
+						o = Enabled <BR /> x = Disabled
+					</div> -->
+			<!-- </div>
+				<div class="" style="float: left; padding-left: 10px;">
+					<p:messages showDetail="false" id="userMsg" />
+					<h3>
+						<b>SYSTEM USER STATUS</b>
+					</h3> -->
+			<!-- style="width:775px;" -->
+			<br />
+			<br />
+			<br />
+			<p:outputPanel>
+				<center>
+					<p:ajaxStatus style="width:20px;height:20px;text-align:right;"
+						id="ajaxStatusPanel">
+						<f:facet name="start">
+							<h:graphicImage value="./images/ajaxloading.gif" />
+						</f:facet>
+
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+					<p:messages id="Msg" />
+
+					<table style="width: 85%;">
+						<tr valign="middle">
+							<td><p:dataTable id="tbUsersList" var="row" widgetVar="Tb"
+									value="#{users.usersList}" emptyMessage="There are no users"
+									rowKey="#{row.userId}" editable="true" editMode="cell"
+									filteredValue="#{users.filteredUsersList}"
+									rowStyleClass="${(row.pinCodeTimeout lt 90 || row.passwordTimeout lt 90)?'highligtedRow':''}"
+									style="border-right-width: 2px !important;overflow: -moz-scrollbars-vertical;overflow-x: hidden;overflow-y: auto;max-height:400px !important; width:100%;">
+									<f:facet name="header">  
+         						   			SYSTEM USER STATUS
+     									</f:facet>
+
+
+									<p:column style="width:30%;white-space:unset;"
+										sortBy="#{row.divisionName}" filterBy="#{row.divisionName}">
+										<!--105  -->
+										<f:facet name="header">
+											<h:outputText value="DIVISION NAME" />
+										</f:facet>
+										<h:outputText id="divisionName" value="#{row.divisionName}">
+											<p:tooltip for="divisionName" value="#{row.divisionName}" />
+										</h:outputText>
+									</p:column>
+									<p:column style="width:13%;white-space:unset;">
+										<!--65  -->
+										<f:facet name="header">
+											<h:outputText value="SUR NAME" />
+										</f:facet>
+										<h:outputText id="lastName" value="#{row.lastName}">
+											<p:tooltip for="lastName" value="#{row.lastName}" />
+										</h:outputText>
+									</p:column>
+									<p:column style="width:13%;white-space:unset;">
+										<!--65  -->
+										<f:facet name="header">
+											<h:outputText value="FIRST NAME" />
+										</f:facet>
+										<h:outputText id="firstName" value="#{row.firstName}">
+											<p:tooltip for="firstName" value="#{row.firstName}" />
+										</h:outputText>
+									</p:column>
+									<p:column style="width:12%;white-space:unset;">
+										<!--65  -->
+										<f:facet name="header">
+											<h:outputText value="USERNAME" />
+										</f:facet>
+										<h:outputText id="userName" value="#{row.username}">
+											<p:tooltip for="userName" value="#{row.username}" />
+										</h:outputText>
+									</p:column>
+									<p:column style="width:13%;white-space:unset;"
+										sortBy="#{row.pinCodeTimeout}">
+										<!--55  -->
+										<f:facet name="header">
+											<h:outputText value="PINCODE TIMEOUT" />
+										</f:facet>
+										<p:cellEditor>
+											<f:facet name="output">
+												<h:outputText id="pincodeTimout"
+													value="${row.pinCodeTimeout lt 0?'Expired':row.pinCodeTimeout}">
+													<p:tooltip for="pincodeTimout"
+														value="${row.pinCodeTimeout lt 0?'Expired':row.pinCodeTimeout}" />
+												</h:outputText>
+											</f:facet>
+											<f:facet name="input">
+												<h:inputText value="#{row.pinCodeTimeout}"
+													validatorMessage="Value must not be more than 365">
+													<!-- <f:validateLongRange maximum="365"></f:validateLongRange> -->
+												</h:inputText>
+											</f:facet>
+										</p:cellEditor>
+									</p:column>
+									<p:column style="width:13%;white-space:unset;"
+										sortBy="#{row.passwordTimeout}">
+										<!--55  -->
+										<f:facet name="header">
+											<h:outputText value="PASSWORD TIMEOUT" />
+										</f:facet>
+										<p:cellEditor>
+											<f:facet name="output">
+												<!-- <h:outputText value="${row.passwordExpires}"/> -->
+												<h:outputText id="passwordTimout"
+													value="${row.passwordTimeout lt 0?'Expired':row.passwordTimeout}">
+													<p:tooltip for="passwordTimout"
+														value="${row.passwordTimeout lt 0?'Expired':row.passwordTimeout}" />
+												</h:outputText>
+											</f:facet>
+											<f:facet name="input">
+												<h:inputText value="#{row.passwordTimeout}"
+													validatorMessage="Value must not be more than 365">
+													<!-- <f:validateLongRange maximum="365"></f:validateLongRange> -->
+												</h:inputText>
+											</f:facet>
+										</p:cellEditor>
+									</p:column>
+									<p:column style="width:5%;white-space:unset;text-align:center;"
+										sortBy="#{row.boolEnabled}">
+										<f:facet name="header">
+											<h:outputText value="ENABLE" />
+										</f:facet>
+										<p:cellEditor>
+											<f:facet name="output">
+												<h:outputText id="enabled"
+													value="${row.boolEnabled?'o':'x'}">
+												</h:outputText>
+											</f:facet>
+											<f:facet name="input">
+												<h:selectBooleanCheckbox value="#{row.boolEnabled}" />
+											</f:facet>
+										</p:cellEditor>
+									</p:column>
+									<f:facet name="footer"></f:facet>
+								</p:dataTable></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+
+				</center>
+			</p:outputPanel>
+			<div class="threequartersplus30" style="margin: 6px auto; width: 85%">
+				<table style="float: left">
+					<tr>
+						<td><h:commandLink value="CONFIRM CHANGES"
+								action="#{users.saveChanges}" styleClass="blueButton"
+								/></td>
+						<td><p:commandLink value="CANCEL CHANGES"
+								action="#{users.cancelChanges}" styleClass="blueButton"
+								/></td>
+						<td><p:commandLink value="USER ADMIN"
+								action="UsersAdminPage.xhtml?faces-redirect=true"
+								styleClass="blueButton"/></td>
+					</tr>
+				</table>
+				<div
+					style="background: #a8a8a8; border: 1px solid black; color: white; float: right; font-size: 13px; font-weight: bold; padding: 3px 3px 3px 20px; width: 95px;">
+					o = Enabled <BR /> x = Disabled
+				</div>
+
+			</div>
+			<!-- </div> -->
+		</h:form>
+
+		<!-- </div> -->
+	</ui:define>
+</ui:composition>

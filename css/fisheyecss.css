@@ -1,0 +1,87 @@
+/********************** ALARMS MENU ***************************/
+
+#menuHolder {width:510px; height:13px; background:url(../images/topLevel.png) no-repeat center top; position:relative; z-index:500; border:0px solid #888; border-width:0px 0;}
+#menuHolder ul {padding:0; margin:0; list-style:none; width:510px; margin:0 auto;}
+#menuHolder table {border-collapse:collapse; margin:-1px -10px;}
+#menuHolder ul ul {position:absolute; left:-9999px;}
+#menuHolder ul li a b {position:absolute; left:-9999px;}
+
+#menuHolder ul li {float:left; padding:0 14px 0 0;}
+#menuHolder ul li a {display:block; height:13px;}
+#menuHolder ul li#CallAlarms {width:79px;}
+#menuHolder ul li#RecentActivity {width:107px;}
+#menuHolder ul li#LastAlarmFromSite {width:101px;}
+
+#menuHolder ul li:hover {position:relative;}
+#menuHolder ul li a:hover {border:0; position:relative;}
+
+
+#menuHolder ul a:hover ul {left:-5px; top:24px; padding:5px; border:0px solid #888; border-top:0;}
+#menuHolder ul li:hover ul {left:-5px; top:24px; padding:5px; border:0px solid #888; border-top:0;}
+
+#menuHolder ul :hover ul li {padding:0; float:left; height:22px;}
+
+#menuHolder ul li a:hover {background:url(../images/arrow.gif) no-repeat 3px center;}
+#menuHolder ul li:hover > a {background:url(../images/arrow.gif) no-repeat 3px center;}
+
+#menuHolder ul li:hover ul li a:hover {background:url(../images/arrow.gif) no-repeat 0 3px;}
+#menuHolder ul li a:hover ul li a:hover {background:url(../images/arrow.gif) no-repeat 0 5px;}
+
+
+/********************** SITES MENU ***************************/
+
+#sitesMenuHolder {width:410px; height:14px; background:url(../images/siteTopLevel.png) no-repeat center top; position:relative; z-index:500; border:0px solid #888; border-width:0px 0;}
+#sitesMenuHolder ul {padding:0; margin:0; list-style:none; width:410px; margin:0 auto;}
+#sitesMenuHolder table {border-collapse:collapse; margin:-1px -10px;}
+#sitesMenuHolder ul ul {position:absolute; left:-9999px;}
+#sitesMenuHolder ul li a b {position:absolute; left:-9999px;}
+
+#sitesMenuHolder ul li {float:left; padding:0 14px 0 0;}
+#sitesMenuHolder ul li a {display:block; height:13px;}
+#sitesMenuHolder ul li#ListofSites {width:85px;}
+#sitesMenuHolder ul li#CreateNewSite {width:115px;}
+#sitesMenuHolder ul li#ResructDeletedSite {width:110px;}
+
+#sitesMenuHolder ul li:hover {position:relative;}
+#sitesMenuHolder ul li a:hover {border:0; position:relative;}
+
+
+#sitesMenuHolder ul a:hover ul {left:-5px; top:24px; padding:5px; border:0px solid #888; border-top:0;}
+#sitesMenuHolder ul li:hover ul {left:-5px; top:24px; padding:5px; border:0px solid #888; border-top:0;}
+
+#sitesMenuHolder ul :hover ul li {padding:0; float:left; height:22px;}
+
+#sitesMenuHolder ul li a:hover {background:url(../images/arrow.gif) no-repeat 3px center;}
+#sitesMenuHolder ul li:hover > a {background:url(../images/arrow.gif) no-repeat 3px center;}
+
+#sitesMenuHolder ul li:hover ul li a:hover {background:url(../images/arrow.gif) no-repeat 0 3px;}
+#sitesMenuHolder ul li a:hover ul li a:hover {background:url(../images/arrow.gif) no-repeat 0 5px;}
+
+/********************** USERS MENU ***************************/
+
+#usersMenuHolder {width:323px; height:14px; background:url(../images/userTopLevel.png) no-repeat center top; position:relative; z-index:500; border:0px solid #888; border-width:0px 0;}
+#usersMenuHolder ul {padding:0; margin:0; list-style:none; width:410px; margin:0 auto;}
+#usersMenuHolder table {border-collapse:collapse; margin:-1px -10px;}
+#usersMenuHolder ul ul {position:absolute; left:-9999px;}
+#usersMenuHolder ul li a b {position:absolute; left:-9999px;}
+
+#usersMenuHolder ul li {float:left; padding:0 14px 0 0;}
+#usersMenuHolder ul li a {display:block; height:13px;}
+#usersMenuHolder ul li#ListofUsers {width:90px;}
+#usersMenuHolder ul li#AddUser {width:65px;}
+#usersMenuHolder ul li#ChangeProfile {width:110px;}
+
+#usersMenuHolder ul li:hover {position:relative;}
+#usersMenuHolder ul li a:hover {border:0; position:relative;}
+
+
+#usersMenuHolder ul a:hover ul {left:-5px; top:24px; padding:5px; border:0px solid #888; border-top:0;}
+#usersMenuHolder ul li:hover ul {left:-5px; top:24px; padding:5px; border:0px solid #888; border-top:0;}
+
+#usersMenuHolder ul :hover ul li {padding:0; float:left; height:22px;}
+
+#usersMenuHolder ul li a:hover {background:url(../images/arrow.gif) no-repeat 3px center;}
+#usersMenuHolder ul li:hover > a {background:url(../images/arrow.gif) no-repeat 3px center;}
+
+#usersMenuHolder ul li:hover ul li a:hover {background:url(../images/arrow.gif) no-repeat 0 3px;}
+#usersMenuHolder ul li a:hover ul li a:hover {background:url(../images/arrow.gif) no-repeat 0 5px;}

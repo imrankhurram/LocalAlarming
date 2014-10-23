@@ -1,0 +1,125 @@
+@font-face {
+	font-family: 'gothic';
+	src: url('./font/gothic.eot');
+	src: local('gothic'), url('./font/gothic.woff') format('woff'), url('./font/gothic.ttf') format('truetype');
+}
+#printer{
+	width:100% !important;
+	font-family: gothic !important;
+	font-size : 11px !important;
+}
+
+.printP{
+	width:100% !important;
+	font-family: gothic!important;
+	font-size : 11px !important;
+	margin-top:6px !important;
+	margin-bottom:6px !important;
+}
+#printUl{
+padding-left:0px !important;	
+margin-top:0px !important;
+font-family: gothic !important;	
+font-size : 11px !important;
+margin-bottom:5px !important;
+}
+.waitroseTable{
+	width:100% !important;
+	font-family: gothic !important;	
+}
+
+.ui-panelgrid {
+    border-collapse: collapse;
+}
+.ui-panelgrid td {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px !important;
+    padding: 1px 5px !important;
+}
+.printbottom{
+	border: none !important;
+}
+.ui-widget {
+font-family: gothic !important;
+font-size : 11px !important;
+}
+.outputTop{
+font-size:11px !important;	
+padding-left:3px !important;
+}
+.outputTop2{
+font-size:11px !important;	
+padding-left:3px !important;
+}
+.Pprint{
+font-weight: bold !important;
+font-family:gothic !important;
+font-size : 11px !important;
+}
+.waitroseInnerTable{
+font-size:11px !important;	
+}
+.ui-panelgrid td{
+	padding: 3px 5px !important;	
+}
+.st1{
+margin-top:3px !important;
+margin-bottom:3px !important;
+}
+.st11{
+margin-bottom:2px !important;
+margin-top:5px !important;
+} 
+#stage1{
+height:41px !important;	
+padding-left:2px;
+border-bottom: 2px solid;
+border-top: 2px solid;
+}
+.st2{
+margin-top:5px !important;
+}
+#stage2{
+height:30px !important;	
+padding-left:2px;
+border-bottom: 2px solid;
+border-top: 2px solid;
+}
+.st3{
+margin-top:5px !important;		
+}
+#stage3{
+padding-left:2px;
+border-bottom: 2px solid;
+border-top: 2px solid;	
+height:30px !important;	
+}
+.actionbox{
+ width:210px;
+ height:80px;
+}
+.topTitle{
+font-weight:bold;
+font-size:23px !important;
+font-family: gothic !important;	
+}
+.spacerheight{
+height:5px !important;	
+}
+.bottomP{
+margin-top: 0px !important;	
+margin-bottom: 0px !important;
+}
+.col1{
+ height:25px;
+ width:52% !important;	
+}
+.col2{
+height:25px;
+ width:48% !important;		
+}
+.PName{
+border-bottom:none !important;
+width:450px !important;		
+}

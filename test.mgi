@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <CommunicationClass
+        name="com.nextcontrols.bureaudomain.LocalActiveAlarm" x="764" y="468"/>
+    <CommunicationClass
+        name="com.nextcontrols.pagebeans.CurrentAlarmsPageBean" x="441" y="53">
+        <Association
+            destinationClassName="com.nextcontrols.bureaudomain.LocalActiveAlarm"
+            endpointName="toPrintAlarm" kind="Simple"/>
+        <Association
+            destinationClassName="com.nextcontrols.bureaudomain.LocalActiveAlarm"
+            endpointName="alarms" kind="Simple"/>
+        <Association
+            destinationClassName="com.nextcontrols.bureaudomain.LocalActiveAlarm"
+            endpointName="selectedAlarm" kind="Simple"/>
+        <Communication destinationClassName="com.nextcontrols.bureaudomain.LocalActiveAlarm">
+            <Point x="602" y="114"/>
+            <Point x="684" y="114"/>
+            <Point x="823" y="113"/>
+        </Communication>
+        <Communication destinationClassName="com.nextcontrols.bureaudao.ILocalActiveAlarmDAO"/>
+        <Communication destinationClassName="com.nextcontrols.bureaudao.ConnectionBean"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="com.nextcontrols.pagebeans.UserInfoPageBean" x="102" y="48">
+        <Association
+            destinationClassName="com.nextcontrols.bureaudao.UserDAO"
+            endpointName="userDB" kind="Simple"/>
+        <Communication destinationClassName="com.nextcontrols.pagebeans.CurrentAlarmsPageBean"/>
+        <Communication destinationClassName="com.nextcontrols.bureaudao.LocalActiveAlarmDAO"/>
+        <Communication destinationClassName="com.nextcontrols.bureaudao.UserDAO"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="com.nextcontrols.bureaudao.ILocalActiveAlarmDAO" x="747" y="53"/>
+    <CommunicationClass
+        name="com.nextcontrols.bureaudao.LocalActiveAlarmDAO" x="90" y="475">
+        <Extension destinationClassName="com.nextcontrols.bureaudao.ILocalActiveAlarmDAO"/>
+        <Association
+            destinationClassName="com.nextcontrols.bureaudao.ILocalActiveAlarmDAO"
+            endpointName="instance" kind="Simple"/>
+        <Communication destinationClassName="com.nextcontrols.bureaudomain.LocalActiveAlarm"/>
+        <Communication destinationClassName="com.nextcontrols.bureaudao.ConnectionBean">
+            <Point x="245" y="481"/>
+        </Communication>
+    </CommunicationClass>
+    <CommunicationClass name="com.nextcontrols.bureaudao.UserDAO"
+        x="215" y="230">
+        <Communication destinationClassName="com.nextcontrols.bureaudao.ConnectionBean"/>
+    </CommunicationClass>
+    <CommunicationClass name="com.nextcontrols.bureaudao.ConnectionBean"
+        x="460" y="226"/>
+</ClassDiagram>

@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+	<!-- START OF DIALOG -->
+	<p:dialog widgetVar="addUserDlg" id="addUserDlg" appendTo="@(body)"
+		modal="true" position="center" header="Add User" resizable="false"
+		showEffect="fade" hideEffect="fade" closable="false">
+
+		<h:form id="addUserFrm" prependId="false">
+			<p:messages showDetails="true" id="saveMsg" closable="true" />
+
+			<p:panel style="box-shadow: 0px 0px 0px 0px !important;">
+				<p:panelGrid columns="2" style="width:100%;">
+					<p:panelGrid columns="2">
+						<p:outputLabel for="selectListType" value="User Type: " />
+						<p:selectOneMenu id="selectListType"
+							value="#{users.newUser.userWebType}" required="true"
+							editable="false">
+							<!-- <p:ajax listener="#{keyholdercalllist.setType}" event="change" update="addKeyHldsList" process="selectListType"/> -->
+							<f:selectItem itemValue="UserByPermissions" itemLabel="User" />
+							<f:selectItem itemValue="CustAdmin" itemLabel="Customer Admin" />
+						</p:selectOneMenu>
+						<p:outputLabel for="addUserTitle" value="Title: " />
+						<p:inputText id="addUserTitle" value="#{users.newUser.title}"
+							required="true" requiredMessage="Title is required!" />
+						<p:outputLabel for="addForename" value="Forename: " />
+						<p:inputText id="addForename" value="#{users.newUser.firstName}"
+							required="true" requiredMessage="Forename is required!" />
+						<p:outputLabel for="addSurname" value="Surname: " />
+						<p:inputText id="addSurname" value="#{users.newUser.lastName}"
+							required="true" requiredMessage="Surname is required!" />
+						<p:outputLabel for="addContactNo" value="Contact No.: " />
+						<p:inputText id="addContactNo"
+							value="#{users.newUser.contactNumber}" />
+						<p:outputLabel for="addEmail" value="Email: " />
+						<p:inputText id="addEmail" value="#{users.newUser.email}" />
+					</p:panelGrid>
+					<p:panelGrid columns="2">
+						<p:outputLabel for="addUsername" value="UserName: " />
+						<p:inputText id="addUsername" value="#{users.newUser.username}"
+							required="true" requiredMessage="Username is required!" />
+						<p:outputLabel for="addUserPassword" value="User Password: " />
+						<p:password id="addUserPassword" value="#{users.newUser.password}"
+							required="true" requiredMessage="User Password is required!" />
+						<p:outputLabel for="addPinCode" value="PIN Code: " />
+						<p:inputText id="addPinCode" value="#{users.newUser.pincode}"
+							required="true" requiredMessage="PIN Code is required!" />
+						<p:outputLabel for="addAccessExpiry"
+							value="Access Expiry (days): " />
+						<p:inputText id="addAccessExpiry"
+							value="#{users.newUser.passwordTimeout}" required="true"
+							requiredMessage="Access Expiry is required!" />
+						<p:outputLabel for="addPINExpiry" value="PIN Expiry (days): " />
+						<p:inputText id="addPINExpiry"
+							value="#{users.newUser.pinCodeTimeout}" required="true"
+							requiredMessage="PIN Expiry is required!" />
+					</p:panelGrid>
+				</p:panelGrid>
+				<!-- max-height:205px; -->
+				<p:panel
+					style="overflow:auto;width:100%; box-shadow: 0px 0px 0px 0px !important;">
+					<p:dataTable widgetVar="Tb" id="tbCustomersList" var="row"
+						value="#{users.ownCustomersList}" rowKey="#{row.id}"
+						paginator="true" paginatorPosition="bottom"
+						paginatorAlwaysVisible="false" rows="200" scrollable="true"
+						scrollHeight="150px;" style="width:670px;"
+						emptyMessage="You have no Customer." resizableColumns="true"
+						selection="#{users.ownSelectedCustomersList}">
+						<p:column width="70">
+							<f:facet name="header">
+								<h:outputText value="OPERATING DIVISION" />
+							</f:facet>
+							<h:outputText id="name" value="#{row.name}">
+								<p:tooltip for="name" value="#{row.name}" />
+							</h:outputText>
+						</p:column>
+						<p:column width="70" selectionMode="multiple"
+							style="text-align:center;" />
+
+					</p:dataTable>
+				</p:panel>
+				<p:panelGrid style="width:100%">
+					<p:row>
+						<p:column style="width:50%"></p:column>
+						<p:column style="text-align:center;">
+							<p:panel style="box-shadow: 0px 0px 0px 0px !important;">
+								<p:commandButton value="Cancel" style="width:auto !important;"
+									onclick="PF('addUserDlg').hide();" styleClass="dialogButton"
+									update=":addUserDlg" resetValues="true" />
+								<p:commandButton id="saveUserBtn" value="Save"
+									style="width:auto !important;" action="#{users.saveNewUser}"
+									styleClass="dialogButton" oncomplete="PF('addUserDlg').hide();"
+									update=":addUserFrm" />
+							</p:panel>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:panel>
+
+
+		</h:form>
+
+	</p:dialog>
+	<!-- END OF DIALOG -->
+</ui:composition>

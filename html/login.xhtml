@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+
+<link rel="stylesheet" href="./css/styles.css" type="text/css"/>
+<link rel="stylesheet" href="./css/panel.css" type="text/css"/>
+<link rel="stylesheet" href="./css/textstyles.css" type="text/css"/>
+
+</h:head>
+
+<h:body style="background-position:center top; background-image: url(./images/login-page-bg.jpg); background-repeat: no-repeat;background-color:#C4C4C4;">
+<center>
+<f:view>
+<h:form style="margin-top:200px;">
+
+<h:outputText value="Wrong username and/or password" style="color:red;font-weight:bold;" rendered="#{userInfo.wrongDetails==true}"/>
+<br/>
+<table>
+
+ <tr>
+  <td align="left">
+	<h:outputLabel value="Username" for="username" style="font-size: 12px;font-family:Arial;"/>
+  </td>
+  <td>
+	 <p:inputText value="#{userInfo.userName}" id="username" size="28" required="true" requiredMessage="You must provide username"/>
+  </td>
+ </tr>
+    <p:focus for="username"/> 
+<tr/>
+
+<tr/>
+<tr>
+  <td align="left">
+	<h:outputLabel value="Password" for="password" style="font-size: 12px;font-family:Arial;"/>
+  </td>
+  <td>
+    <p:password value="#{userInfo.password}" id="password" feedback="false" required="true" requiredMessage="You must provide password" size="28"/>
+  </td>
+</tr>
+
+<!-- <tr>
+	<p:commandButton id="hidden" style="width:0px !important;height:0px !important;border:none !important;background:none !important;" action="#{userInfo.processLogin}" immediate="false"/>
+</tr>--> 
+<tr>
+  <td align="right" colspan="3">
+	<h:commandButton action="#{userInfo.processLogin}" type="image" image="./images/button_login.png"/>
+  </td>
+</tr>
+<tr/>		
+
+</table>
+</h:form>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div id="copytext" style="font-size: 12px;font-family:Arial;">
+	Copyright © 2014 Next Control Systems Ltd All rights reserved,Version 2.0 Released 13/05/2014
+</div>
+</f:view>
+</center>
+</h:body>
+</html>

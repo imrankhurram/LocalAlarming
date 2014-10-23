@@ -1,0 +1,37 @@
+.red{
+	background-color:#FF0000 !important; 
+    background-image:none !important;
+    color:#000000 !important;
+}
+
+.orange{
+
+   background-color:#FF9933 !important; 
+    background-image:none !important;
+    color:#000000 !important;
+}
+.selectedKeyholder{
+	background-color:#769ecb !important;
+	background-image:none !important;
+}
+
+.call{
+	background-image: url('../images/call.gif') !important;
+}
+
+
+.disabled{
+	color: #0066FF !important;
+}
+
+.expired{
+	color:#686868 !important;
+}
+
+.active{
+	color: #FF0000 !important;
+}
+
+.inactive{
+	color: #000000 !important;
+}

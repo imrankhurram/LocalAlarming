@@ -1,0 +1,167 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="MainTemplate.xhtml">
+
+
+	<ui:define name="contentPanel">
+		<!-- <div id="Wrapper"> -->
+		<!-- <ui:include src="./snippets/MenuBars/MenuBarUsersSnippet.xhtml" /> -->
+		<ui:include src="./snippets/DlgAddUser.xhtml" />
+		<ui:include src="./snippets/DlgEditUser.xhtml" />
+
+		<h:form id="frmUsersPage" prependId="false">
+			<!-- 	<div class="quarterminus30" style="margin: 0 10px 5px; width: 100%">
+					<p:ajaxStatus style="width:20px;height:20px;text-align:right;"
+						id="ajaxStatusPanel">
+						<f:facet name="start">
+							<h:graphicImage value="./images/ajaxloading.gif" />
+						</f:facet>
+
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+
+					<div class="userPanel" style="float: left">
+						User:
+						<p:outputLabel value="#{userInfo.userName}"
+							style="font-size:15px !important; font-weight:bold !important;" />
+					</div>
+					<div
+						style="background: #a8a8a8; border: 1px solid black; color: white; float: right; font-size: 13px; font-weight: bold; padding: 3px 3px 3px 20px; width: 95px;">
+						o = Enabled <BR /> x = Disabled
+					</div>
+				</div>
+				<div class="" style="float: left; padding-left: 10px;">
+					<p:messages showDetail="false" id="userMsg" />
+					<h3>
+						<b>SYSTEM USER STATUS</b>
+					</h3> -->
+			<br />
+			<br />
+			<br />
+			<p:outputPanel>
+				<center>
+					<p:ajaxStatus style="width:20px;height:20px;text-align:right;"
+						id="ajaxStatusPanel">
+						<f:facet name="start">
+							<h:graphicImage value="./images/ajaxloading.gif" />
+						</f:facet>
+
+						<f:facet name="complete">
+							<h:outputText value="" />
+						</f:facet>
+					</p:ajaxStatus>
+					<p:messages id="Msg" />
+
+					<table style="width: 85%;">
+						<tr valign="middle">
+							<td>
+								<!-- style="width:775px;" --> <p:dataTable widgetVar="Tb"
+									id="tbUsersList" var="row" value="#{users.usersList}"
+									rowKey="#{row.userId}"
+									style="border-right-width: 2px !important;overflow: -moz-scrollbars-vertical;overflow-x: hidden;overflow-y: auto;max-height:400px !important; width:100%;"
+									selection="#{users.selectedUser}" selectionMode="single"
+									filteredValue="#{users.filteredUsersList}"
+									emptyMessage="No User." resizableColumns="true">
+									<f:facet name="header">  
+         						   			SYSTEM USER STATUS
+     									</f:facet>
+
+									<p:column style="width:40%;" sortBy="#{row.divisionName}"
+										filterBy="#{row.divisionName}">
+										<!--105  -->
+										<f:facet name="header">
+											<h:outputText value="DIVISION NAME" />
+										</f:facet>
+										<h:outputText id="divisionName" value="#{row.divisionName}">
+											<p:tooltip for="divisionName" value="#{row.divisionName}" />
+										</h:outputText>
+									</p:column>
+									<p:column style="width:19%;">
+										<!--65  -->
+										<f:facet name="header">
+											<h:outputText value="SUR NAME" />
+										</f:facet>
+										<h:outputText id="lastName" value="#{row.lastName}">
+											<p:tooltip for="lastName" value="#{row.lastName}" />
+										</h:outputText>
+									</p:column>
+									<p:column style="width:19%;">
+										<!--65  -->
+										<f:facet name="header">
+											<h:outputText value="FIRST NAME" />
+										</f:facet>
+										<h:outputText id="firstName" value="#{row.firstName}">
+											<p:tooltip for="firstName" value="#{row.firstName}" />
+										</h:outputText>
+									</p:column>
+									<p:column style="width:19%;">
+										<!--65  -->
+										<f:facet name="header">
+											<h:outputText value="USERNAME" />
+										</f:facet>
+										<h:outputText id="userName" value="#{row.username}">
+											<p:tooltip for="userName" value="#{row.username}" />
+										</h:outputText>
+									</p:column>
+									<f:facet name="footer"></f:facet>
+								</p:dataTable>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+
+				</center>
+			</p:outputPanel>
+			<div class="threequartersplus30" style="margin: 6px auto; width: 85%">
+				<table style="float: left">
+					<tr>
+						<td><p:commandLink
+								actionListener="#{users.initializeNewUser}" update=":addUserDlg"
+								styleClass="blueButton" oncomplete="PF('addUserDlg').show();">ADD <br />USER</p:commandLink></td>
+						<td><p:commandLink value="MODIFY USER"
+								actionListener="#{users.initializeEditUser}"
+								update=":editUserFrm" styleClass="blueButton" /></td>
+						<td><p:commandLink value="DELETE USER"
+								action="#{users.checkUserSelection}" styleClass="blueButton" /></td>
+					</tr>
+				</table>
+
+			</div>
+
+			<!-- </div> -->
+		</h:form>
+		<p:confirmDialog widgetVar="confirmDlg" header="Delete User"
+			appendTo="@(body)" closable="false"
+			message="Are you sure you want to delete the selected User ?">
+			<h:form prependId="false">
+				<h:panelGrid columns="2">
+					<p:commandButton value="Delete" id="deleteUserBtn"
+						actionListener="#{users.deleteUser}"
+						style="width:auto !important;"
+						oncomplete="PF('confirmDlg').hide()" />
+					<p:commandButton value="Close" onclick="PF('confirmDlg').hide()"
+						style="width:auto !important;" />
+				</h:panelGrid>
+			</h:form>
+
+		</p:confirmDialog>
+		<!-- </div> -->
+	</ui:define>
+</ui:composition>

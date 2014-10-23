@@ -1,0 +1,142 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.prime.com.tr/ui"
+template="MainTemplate.xhtml">
+
+<ui:define name="contentPanel">
+<ui:include src="./snippets/DlgHistoricActivityReportsSnippet.xhtml" />	
+	<center>
+	<h:form id="siteHistActivity">
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<p:outputPanel>
+	<p:messages id="Msg" />
+	<table style="width:100%;">
+	<tr valign="middle"><td align="center">
+	<center>
+	<p:panel header="Filter" style="width:30%;">
+		<h:panelGrid columns="2">
+			<h:outputText value="Date From: "/>
+			<p:calendar id="dateFromHist" value="#{historicActivity.dateFrom}" mode="popup"  locale="en" pattern="dd-MM-yyyy" startWeekday="1" monthFormat="short" showWeekdays="false"/>
+			<h:outputText value="Date To: "/>
+			<p:calendar id="dateToHist" value="#{historicActivity.dateTo}" mode="popup" locale="en" pattern="dd-MM-yyyy" startWeekday="1" monthFormat="short" showWeekdays="false"/>
+		</h:panelGrid>	
+		<p:commandButton value="Update" actionListener="#{historicActivity.updateTable}" update="histActivity, siteHistActivity" style="line-height:1.6 !important;-webkit-border-radius:5px !important;border-radius:5px !important;-moz-border-radius:5px !important"/>
+	</p:panel>
+	</center>
+	</td></tr>
+	<tr/><tr/><tr/><tr/><tr/><tr/>
+	<tr><td align="left">
+	<p:ajaxStatus>
+		<f:facet name="start">
+		 <p:graphicImage value="./images/ajaxloading.gif" />
+		</f:facet>
+		
+		<f:facet name="complete">
+		 	<h:outputText value=""/>
+		</f:facet>
+
+	</p:ajaxStatus>
+	
+
+	<center>
+	<p:panel id="histActivity" header="Historic Activity From Site" style="width:100%;">
+	
+		<p:dataTable id="tbHistoricAlarms" value="#{historicActivity.historicSiteAlarms}" var="histAlarms" paginator="true" dynamic="false" paginatorPosition="top" paginatorTemplate="{PreviousPageLink} {CurrentPageReport}
+					{NextPageLink}" emptyMessage="Please select dates to view alarms" rows="100" paginatorAlwaysVisible="false" style="border-right-width: 2px !important;overflow: -moz-scrollbars-vertical;overflow-x: hidden;overflow-y: auto;max-height:400px !important; width:100%;">
+
+					  <f:facet name="header">  
+            Historic Alarms
+     </f:facet>
+      <p:column style="width:10%;" >
+          <f:facet name="header">
+          <h:outputText value="Alarm ID" style="font-weight:Bold!important;color:#6B696B!important"/>
+          </f:facet>
+     	 <h:outputText value="#{histAlarms.alarmId}"/> 
+   	 </p:column>
+        
+     <p:column style="width:14%;" filterStyle="width:60%;" filterBy="#{histAlarms.alarmId}">
+     	 <f:facet name="header">
+     	    <h:outputText value="System Number" style="font-weight:Bold!important;color:#6B696B!important" />
+     	 </f:facet>
+     	 <h:outputText value="#{histAlarms.controllerName}"/> 
+   	 </p:column>
+        
+    <p:column style="width:15%;">
+         <f:facet name="header">
+         <h:outputText value="Receive Time" style="font-weight:Bold!important;color:#6B696B!important"/>
+     	 </f:facet>
+     	 <h:outputText value="#{histAlarms.recvTime}"/> 
+   	 </p:column>
+  	 
+	 <p:column style="width:15%;">
+     	 <f:facet name="header">
+     	 <h:outputText value="Completed Time" style="font-weight:Bold!important;color:#6B696B!important"/>
+     	 </f:facet>
+     	 <h:outputText value="#{histAlarms.probIdentiTime}"/> 
+   	 </p:column>
+   	 <p:column style="width:12%;">
+   	     <f:facet name="header">
+   	      <h:outputText value="Partners Name" style="font-weight:Bold!important;color:#6B696B!important"/>
+   	     </f:facet>
+     	 <h:outputText value="#{histAlarms.partnersName}"/> 
+   	 </p:column>
+   		  
+   	<!--  <p:column style="width:18%;" headerText="Alarm Details" filterStyle="width:60%;" filterBy="#{histAlarms.alarmType}" >
+     	 <f:facet name="header">
+     	 
+     	 </f:facet>
+     	 <h:outputText value="#{histAlarms.alarmType}"/> 
+   	 </p:column> -->
+   		
+    <p:column style="width:20%;"  filterStyle="width:60%;" filterBy="#{histAlarms.problem_identified_detail}">
+     	 <f:facet name="header">
+     	 <h:outputText value="Problem Identified" style="font-weight:Bold!important;color:#6B696B!important"/>
+     	 </f:facet>
+     	 <h:outputText value="#{histAlarms.problem_identified_detail}"/> 
+   	 </p:column> 
+   	 
+   	 <p:column style="width:20%;" >
+   	     <f:facet name="header">
+   	     <h:outputText value="Action Taken" style="font-weight:Bold!important;color:#6B696B!important"/>
+   	     </f:facet>
+     	 <h:outputText value="#{histAlarms.actionTaken}"/> 
+   	 </p:column> 
+   	 <p:column style="width:12%;">
+   	     <f:facet name="header">
+   	     <h:outputText value="Verisae Number" style="font-weight:Bold!important;color:#6B696B!important"/>
+   	     </f:facet>
+   	     <h:outputText value="#{histAlarms.verisaeNumber}"/>
+   	 </p:column>
+   	 
+   	 
+   	 <!-- <p:column style="width:20%;" headerText="Completed By"  filterBy="#{histAlarms.problemIdentifiedBy}" filterStyle="width:60%;">
+     	 <h:outputText value="#{histAlarms.problemIdentifiedBy}"/> 
+   	 </p:column> --> 
+				</p:dataTable>
+	<p:toolbar style="border-radius:0px !important;-webkit-border-radius:0px !important;-moz-border-radius:0px !important; width:100%;">
+	   		<p:toolbarGroup align="left">
+			<p:commandButton value="PDF"  style="color:#A8A6A8!important;"    update="siteHistActivity" onstart= "historicActivityDialog.show();"  rendered="#{historicActivity.val==true}">
+		    </p:commandButton>
+		    <p:commandButton value="PDF"  style="color:#A8A6A8!important;"  actionListener ="#{historicActivity.checkHistAlarmsSize}"  update="siteHistActivity, Msg" rendered ="#{historicActivity.val==false}"/>	
+	  		</p:toolbarGroup>
+	  		</p:toolbar>
+			
+		</p:panel>	
+		</center>
+	
+			
+	</td></tr>
+	</table>
+     </p:outputPanel>
+	</h:form>
+	</center>
+	
+	
+	
+</ui:define>
+</ui:composition>

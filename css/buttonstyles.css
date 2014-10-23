@@ -1,0 +1,9 @@
+/********************** Title - Centre ***************************/
+.pushButton {
+ 	background: url(http://localhost:8080/bureauv2new/images/tutela.jpg)
+    }
+    
+.alarmstatisticsdisplaybutton {
+    border: 0px solid #FFFFFF;
+    background: #F2F2F2;
+}

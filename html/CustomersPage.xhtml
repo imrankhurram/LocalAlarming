@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="MainTemplate.xhtml">
+
+
+	<ui:define name="contentPanel">
+		<!-- <div id="Wrapper"> -->
+		<!-- <ui:include src="./snippets/MenuBars/MenuBarCustomersSnippet.xhtml" /> -->
+
+
+		<h:form id="frmCustomerPage">
+			<br />
+			<br />
+			<br />
+			<p:outputPanel>
+				<p:messages id="Msg" />
+				<center>
+
+					<table style="width: 85%;">
+						<tr valign="middle">
+							<td><p:dataTable id="tbCusomterList" var="row"
+									value="#{users.customersList}"
+									emptyMessage="There are no customers"
+									rowStyleClass="#{alarmtemp.rowClass}"
+									style="border-right-width: 2px !important;overflow: -moz-scrollbars-vertical;overflow-x: hidden;overflow-y: auto;max-height:450px !important; width:100%;">
+									<f:facet name="header">  
+         						   		CUSTOMER LIST
+     								</f:facet>
+									<p:column style="width:80%;">
+										<f:facet name="header">
+											<h:outputText value="NAME" />
+										</f:facet>
+										<h:outputText value="#{row.name}" />
+									</p:column>
+									<p:column style="width:20%;text-align:center;">
+										<f:facet name="header">
+											<h:outputText value="VIEW" />
+										</f:facet>
+										<h:commandLink id="viewCustomer"
+											action="#{users.viewCustomerUsers(row.id,row.name)}"
+											style="background: url('./images/ViewWebsites.png')"
+											styleClass="deptdataTableActions" />
+									</p:column>
+									<f:facet name="footer"></f:facet>
+								</p:dataTable> <!-- </div> --></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+
+				</center>
+			</p:outputPanel>
+		</h:form>
+
+		<!-- 	</div> -->
+	</ui:define>
+</ui:composition>
